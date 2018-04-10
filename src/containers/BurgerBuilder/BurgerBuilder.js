@@ -5,10 +5,10 @@ import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 
 const INGREDIENT_PRICES = {
-    salad: 0.5,
-    cheese: 0.4,
-    meat: 1.3,
-    bacon: 0.7
+    Salad: 0.5,
+    Cheese: 0.4,
+    Meat: 1.3,
+    Bacon: 0.7
 }
 
 class BurgerBuilder extends Component {
@@ -24,11 +24,13 @@ class BurgerBuilder extends Component {
             Meat: 0
         },
         totalPrice: 4
+        
     }
+    
 
     addIngredientHandler = (type) => {
         const oldCount = this.state.ingredients[type];
-        const updatedCount = oldCount +1;
+        const updatedCount = oldCount + 1;
         const updatedIngredients = {
             ...this.state.ingredients
         };
@@ -38,7 +40,7 @@ class BurgerBuilder extends Component {
         const newPrice = oldPrice + priceAddion;
         this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
     }
-
+    
     removeIngredientHandler = (type) => {
         const oldCount = this.state.ingredients[type];
         if (oldCount <= 0) {
@@ -59,6 +61,7 @@ class BurgerBuilder extends Component {
         const disabledInfo = {
             ...this.state.ingredients
         };
+
         for (let key in disabledInfo) {
             disabledInfo[key] = disabledInfo[key] <= 0
         }
@@ -68,7 +71,8 @@ class BurgerBuilder extends Component {
                 <BuildControls
                     ingredientAdded={this.addIngredientHandler}
                     ingredientRemoved={this.removeIngredientHandler}
-                    disabled={disabledInfo} /> 
+                    disabled={disabledInfo}
+                    price={this.state.totalPrice} /> 
             </Auxx>
         );
     }
