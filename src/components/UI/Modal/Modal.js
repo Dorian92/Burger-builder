@@ -4,16 +4,13 @@ import classes from './Modal.css';
 import Auxx from '../../../hoc/Auxx/Auxx';
 import Backdrop from '../Backdrop/Backdrop';
 
-/* shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.show !== this.props.show        
-}
-
-componentWillUpdate() {
-    console.log('[Modal] WillUpdate')
-} */
 
 class Modal extends Component {
     // THis could be a fucntional component, doesn't have to be a class component
+
+    shouldComponentUpdate ( nextProps, nextState) {
+        return nextProps.show !== this.props.show || nextProps.children !== this.props.children;
+    }
 
     componentWillUpdate() {
         console.log('[Modal] WillUpdate')
