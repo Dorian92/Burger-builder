@@ -19,7 +19,8 @@ class ContactData extends Component {
                 validation: {
                     required: true
                 },
-                valid: false
+                valid: false,
+                touched: false
             },
             street: {
                 elementType: 'input',
@@ -31,7 +32,8 @@ class ContactData extends Component {
                 validation: {
                     required: true
                 },
-                valid: false
+                valid: false,
+                touched: false
             },
             zidCode: {
                 elementType: 'input',
@@ -45,7 +47,8 @@ class ContactData extends Component {
                     minLength: 5,
                     maxLength: 5
                 },
-                valid: false
+                valid: false,
+                touched: false
             },
             conutry: {
                 elementType: 'input',
@@ -57,7 +60,8 @@ class ContactData extends Component {
                 validation: {
                     required: true
                 },
-                valid: false
+                valid: false,
+                touched: false
             },
             email: {
                 elementType: 'input',
@@ -69,7 +73,8 @@ class ContactData extends Component {
                 validation: {
                     required: true
                 },
-                valid: false
+                valid: false,
+                touched: false
             },
             deliveryMethod: {
                 elementType: 'select',
@@ -115,6 +120,7 @@ class ContactData extends Component {
         const updatedFromElement = {...updatedOrderFrom[inputIdentifier]};
         updatedFromElement.value = event.target.value;
         updatedFromElement.valid = this.checkValidity(updatedFromElement.value, updatedFromElement.validation);
+        updatedFromElement.touched = true;
         updatedOrderFrom[inputIdentifier] = updatedFromElement;
         console.log(updatedFromElement);
         this.setState({orderForm:updatedOrderFrom})
@@ -156,6 +162,7 @@ class ContactData extends Component {
                         value={formElement.config.value}
                         invalid={!formElement.config.valid}
                         shouldValidate={formElement.config.validation}
+                        touched={formElement.config.touched}
                         changed={(event) => this.inputChangedHandler(event,formElement.id)} />
                 ))}
                 <Button btnType="Success">ORDER</Button>
