@@ -8,14 +8,47 @@ import Input from '../../../components/UI/Input/Input';
 
 class ContactData extends Component {
     state = {
-        name: '',
-        email: '',
-        address: {
-            street: '',
-            postalCode: ''
+        orderForm: {
+            customer: {
+                name: {
+                    elementType: 'input',
+                    elementConfig: {
+                        type: 'text',
+                        placeholder: 'Your Name'
+                    }
+                },
+                street: {
+                    elementType: 'input',
+                    elementConfig: {
+                        type: 'text',
+                        placeholder: 'Street'
+                    },
+                zidCode: {
+                    elementType: 'input',
+                    elementConfig: {
+                        type: 'text',
+                        placeholder: 'ZIP Code'
+                    },
+                conutry: {
+                    elementType: 'input',
+                    elementConfig: {
+                        type: 'text',
+                        placeholder: 'Country'
+                    },
+                email: {
+                    elementType: 'input',
+                    elementConfig: {
+                        type: 'email',
+                        placeholder: 'Your E-Mail'
+                    }
+            }
         },
         loading: false
+                }
+            }
+        }
     }
+}
 
     orderHandler = (event) => {
         event.preventDefault();
@@ -23,15 +56,6 @@ class ContactData extends Component {
             const order = {
                 ingredients: this.props.ingredients,
                 price: this.props.price,
-                customer: {
-                    name: 'Dorian Sabo',
-                    adress: {
-                        street: 'Pivarska 26',
-                        zidCode: '25260',
-                        conutry: 'Serbia'
-                    },
-                    email: 'd0xapatin@gmail.com'
-                },
                 deliveryMethod: 'fastest'
             }
 
@@ -49,10 +73,10 @@ class ContactData extends Component {
     render() {
         let from = (
             <form>
-                <Input inputtype="input" type="text" name="name" placeholder="Your Name" />
-                <Input inputtype="input" type="text" name="email" placeholder="Your Email" />
-                <Input inputtype="input" type="text" name="street" placeholder="Street" />
-                <Input inputtype="input" type="text" name="postal" placeholder="Postal Code" />
+                    <Input inputtype="input" type="text" name="name" placeholder="Your Name" />
+                    <Input inputtype="input" type="text" name="email" placeholder="Your Email" />
+                    <Input inputtype="input" type="text" name="street" placeholder="Street" />
+                    <Input inputtype="input" type="text" name="postal" placeholder="Postal Code" />
                 <Button clicked={this.orderHandler} btnType="Success">ORDER</Button>
         </form>
         );
