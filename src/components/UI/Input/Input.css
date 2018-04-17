@@ -25,3 +25,8 @@
     background-color: #ccc;
     box-sizing: border-box;
 }
+
+.Invalid {
+    border: 1px solid red;
+    background-color: salmon;
+}
