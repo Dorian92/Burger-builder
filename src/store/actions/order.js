@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-orders';
-import order from '../../components/Order/Order';
+
 
 export const purchaseBurgerSuccess = (id, orderData) => {
     return {
@@ -23,7 +23,7 @@ export const purchaseBurgerStart = () => {
     }
 }
 
-export const purchaseBurger = (orderData) => {
+export const purchaseBurger = ( orderData ) => {
     return dispatch => {
         dispatch(purchaseBurgerStart());
         axios.post('/orders.json', orderData)
@@ -36,3 +36,9 @@ export const purchaseBurger = (orderData) => {
         }); 
     };
 };
+
+export const purchaseInit = () => {
+    return {
+        type: actionTypes.PURCHASE_INIT
+    }
+}
