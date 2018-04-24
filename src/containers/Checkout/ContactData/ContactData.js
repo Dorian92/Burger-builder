@@ -107,6 +107,8 @@ class ContactData extends Component {
                 price: this.props.price,
                 orderData: formData
         }
+
+        this.props.onOrderBurger(order);
     }
 
     inputChangedHandler = (event, inputIdentifier) => {
@@ -189,6 +191,6 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-    onOrderBurger: () => dispatch
+    onOrderBurger: (orderData) => dispatch(actions.purchaseBurgerStart(orderData))
 }
 export default connect(mapStateToProps)(withErrorHandler(ContactData, axios));
