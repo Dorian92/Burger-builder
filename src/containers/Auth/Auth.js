@@ -40,7 +40,7 @@ class Auth extends Component {
                 touched: false
             }
         },
-        isSignUp: true
+        isSignUp: false
     }
 
     componentDidMount() {
@@ -134,7 +134,7 @@ class Auth extends Component {
         
         let authRedirect = null;
         if (this.props.isAuthenticated) {
-            authRedirect = <Redirect to="/" />
+            authRedirect = <Redirect to={this.props.authRedirectPath} />
         }
 
         return (
@@ -159,7 +159,7 @@ const mapStateToProps = state => {
         error: state.auth.error,
         isAuthenticated: state.auth.token !== null,
         buildingBurger: state.burgerBuilder.building,
-        authRedirectPath: state.auth.authRedirect
+        authRedirectPath: state.auth.authRedirectPath
     }
 }
 
