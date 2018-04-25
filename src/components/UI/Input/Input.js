@@ -10,9 +10,6 @@ const input = (props) => {
     if(props.invalid && props.shouldValidate && props.touched) {
         inputClasses.push(classes.Invalid);
     }
-    if (props.invalid && props.touched) {
-        validationError = <p>Please enter a valid {props.value}</p>;
-    }
 
     switch (props.elementType) {
         case ('input'):
@@ -39,7 +36,7 @@ const input = (props) => {
             </select>);
             break;
         default: 
-            inputElement = <input onChange={props.changed}  className={inputClasses} {...props.elementConfig} value={props.value} />;
+            inputElement = <input onChange={props.changed}  className={inputClasses.join(' ')} {...props.elementConfig} value={props.value} />;
     }
     return (
         <div className={classes.Input}>
